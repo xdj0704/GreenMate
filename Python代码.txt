@@ -1,0 +1,156 @@
+import uuid
+from dataclasses import dataclass, asdict
+from typing import List, Dict, Optional
+
+# --------------------------
+# 1. 数据结构体：证据、运行记录
+# --------------------------
+EVIDENCE_STATUS = ("ok", "unavailable", "error")
+
+@dataclass
+class Evidence:
+    """证据记录，案例书标准证据结构"""
+    source_type: str   # 历史观测 / 当前观测 / 外部天气 / 专业知识 / 模型预测
+    source: str
+    time: str
+    status: str        # ok / unavailable / error
+    result: Optional[str] = None
+    citation: Optional[str] = None
+
+
+@dataclass
+class RunRecord:
+    """每一次完整分析的运行记录 run_id"""
+    run_id: str
+    analysis_time: str
+    location: str
+    scene: str   # S1/S2/S3/S4/S5
+    evidence_list: List[Evidence]
+    structured_result: Dict
+    view_state_overview: str
+    view_state_evolve: str
+    view_evidence_space: str
+    view_playback: str
+
+
+class GreenMateEngine:
+    def __init__(self):
+        self.run_history: List[RunRecord] = []  # 保存所有历史run_id
+
+    @staticmethod
+    def gen_run_id() -> str:
+        return f"run-{str(uuid.uuid4())[:8]}"
+
+    def analysis(self,
+                 analysis_time: str,
+                 location: str,
+                 scene: str,
+                 current_obs: Dict,
+                 history_obs: List[Dict],
+                 weather_evidence: Evidence,
+                 knowledge_evidence: Evidence,
+                 model_evidence: Evidence) -> RunRecord:
+        """
+        核心推理入口
+        current_obs: {"temp":xx, "hum":xx, "lux":xx}
+        history_obs: [{"time":"xxx","temp":xx,"hum":xx,"lux":xx},...]
+        """
+        run_id = self.gen_run_id()
+        evidence_list: List[Evidence] = []
+        # 组装证据
+        evidence_list.append(Evidence(
+            source_type="当前观测", source="sensor_realtime", time=analysis_time,
+            status="ok", result=str(current_obs)
+        ))
+        evidence_list.append(Evidence(
+            source_type="历史观测", source="sensor_history", time=analysis_time,
+            status="ok", result=str(history_obs)
+        ))
+        evidence_list.append(weather_evidence)
+        evidence_list.append(knowledge_evidence)
+        evidence_list.append(model_evidence)
+
+        # ========== 推理：连续观察 →状态识别→演化理解→短时预测→多源取证→综合判断→可信降级校验 ==========
+        current_temp = current_obs["temp"]
+        # 判断历史是否持续漂移（S2特征）
+        temp_seq = [h["temp"] for h in history_obs]
+        is_drift = False
+        if len(temp_seq)>=3:
+            diffs = [temp_seq[i+1]-temp_seq[i] for i in range(len(temp_seq)-1)]
+            if all(d>0 for d in diffs):
+                is_drift = True
+
+        weather_ok = (weather_evidence.status == "ok")
+        knowledge_ok = (knowledge_evidence.status == "ok")
+        has_evidence_conflict = False
+        judge_limitations = []
+
+        # 可信降级：标记哪些能力受限
+        if not weather_ok:
+            judge_limitations.append("外部天气不可用，无法完成未来外部扰动风险评估")
+        if not knowledge_ok:
+            judge_limitations.append("专业知识不可用，缺少环境适宜性知识依据")
+
+        # S4证据分歧简单模拟：模型提示风险，但天气预报提示降温
+        if scene == "S4":
+            has_evidence_conflict = True
+
+        # 状态判定
+        current_state = "稳态基线"
+        attention_level = "低关注"
+        trend_desc = "环境数值保持稳定，无明显连续变化"
+        short_forecast = "无显著变化预期"
+
+        if scene == "S1":
+            current_state = "稳态基线"
+            attention_level = "低关注"
+        elif scene == "S2":
+            current_state = "渐进漂移"
+            attention_level = "中等关注"
+            trend_desc = "温度连续抬升，存在渐进漂移趋势，瞬时数值尚未越硬阈值"
+        elif scene == "S3":
+            current_state = "外部扰动风险"
+            attention_level = "中等关注"
+            trend_desc = "本地历史环境稳定，但外部未来天气存在扰动风险"
+            short_forecast = "未来外部条件可能改变大棚环境"
+        elif scene == "S4":
+            current_state = "证据分歧状态"
+            attention_level = "中等关注（存在不确定性）"
+            trend_desc = "不同来源证据指向不完全一致，无法得到单一确定结论"
+            has_evidence_conflict = True
+        elif scene == "S5":
+            current_state = "证据退化受限"
+            attention_level = "有限评估"
+            trend_desc = "部分证据源不可用，仅可基于本地传感器数据做部分分析"
+
+        evidence_integrity = "完整"
+        if has_evidence_conflict:
+            evidence_integrity = "存在分歧"
+        if len(judge_limitations)>0:
+            evidence_integrity = "部分缺失"
+
+        structured_result = {
+            "current_state": current_state,
+            "attention_level": attention_level,
+            "trend_description": trend_desc,
+            "short_term_forecast": short_forecast,
+            "evidence_integrity": evidence_integrity,
+            "judge_limitations": judge_limitations,
+        }
+
+        # ---------------- 四大视图文本输出 ----------------
+        # 视图A：状态总览
+        va = f"""【状态总览｜回答：现在怎样？】
+实时观测：温度{current_obs['temp']}℃，湿度{current_obs['hum']}%RH，光照{current_obs['lux']}lux
+当前环境状态：{current_state}
+关注等级：{attention_level}
+趋势描述：{trend_desc}
+短时预测：{short_forecast}
+证据完整度：{evidence_integrity}
+"""
+        # 视图B：状态演化
+        hist_text = "\n".join([f"  {h['time']}  T:{h['temp']} H:{h['hum']}" for h in history_obs])
+        vb = f"""【状态演化｜回答：为什么会变成这样？】
+分析时刻 {analysis_time}，回看历史时序：
+{hist_text}
+解释：将当前数值放回连续时间窗

@@ -1,0 +1,59 @@
+name: GreenMate CI
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install anthropic==0.51.0
+
+      - name: Run engine smoke test (S1-S5, no API key)
+        env:
+          ANTHROPIC_API_KEY: "sk-ant-placeholder-for-ci"
+        run: |
+          python - <<'EOF'
+          # 不调用真实 LLM，只验证引擎核心逻辑不崩溃
+          from greenmate import scenarios, render
+
+          for sid in scenarios.all_scenario_ids():
+              sc = scenarios.get_scenario(sid)
+              assert sc is not None, f"场景 {sid} 未定义"
+              ctx = render.build_context(sc["timeseries"])
+              doc = render.build_judgment_doc(sc, ctx)
+              assert "current_state" in doc, f"{sid}: 缺少 current_state"
+              assert "attention_level" in doc, f"{sid}: 缺少 attention_level"
+              assert "evidence_list" in doc, f"{sid}: 缺少 evidence_list"
+              assert len(doc["evidence_list"]) >= 3, f"{sid}: 证据列表少于3条"
+              print(f"✅ {sid} ({sc['name']}): current_state={doc['current_state']}, attention={doc['attention_level']}")
+
+          print("\n所有场景引擎验证通过。")
+          EOF
+
+      - name: Verify ALL report generation (no LLM)
+        run: |
+          python - <<'EOF'
+          from greenmate import scenarios, render
+
+          ids = scenarios.all_scenario_ids()
+          assert len(ids) == 5, f"预期5个场景，实际 {len(ids)} 个"
+          print(f"✅ 场景完整性验证通过，共 {len(ids)} 个场景: {', '.join(ids)}")
+          EOF

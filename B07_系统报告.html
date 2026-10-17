@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GreenMate B07 · 系统组装与产品化</title><style>
+:root{--green:#2e7d32;--green-dark:#1b5e20;--green-soft:#e8f2e8;--ink:#22301f;
+--muted:#6b7a66;--bg:#f2f6f1;--line:#dfe7dc;}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.65}
+.topbar{background:linear-gradient(135deg,var(--green-dark),var(--green));color:#fff;padding:18px 24px}
+.brand{font-size:22px;font-weight:700}
+.sub{font-size:13px;opacity:.92;margin-top:4px}
+main{max-width:1100px;margin:0 auto;padding:20px 22px 40px}
+section{background:#fff;border-radius:10px;padding:18px 22px;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:18px}
+h2{margin:0 0 14px;font-size:17px;color:var(--green-dark)}
+h2::before{content:"▌";color:var(--green);margin-right:6px}
+h3{font-size:15px;color:var(--green-dark);margin:18px 0 8px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{background:var(--green-soft);color:var(--green-dark);text-align:left;padding:8px 10px;border-bottom:2px solid var(--line)}
+td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600}
+.st-ok{background:#e5f6e8;color:#15803d}.st-part{background:#fdf3e0;color:#b45309}
+.st-un{background:#fde8e8;color:#b91c1c}
+.hero{display:flex;gap:26px;flex-wrap:wrap;border-left:6px solid var(--green);margin-bottom:18px}
+.hero .item .lb{font-size:12px;color:var(--muted)}
+.hero .item .v{font-size:18px;font-weight:700}
+.ok{color:#15803d}.warn{color:#b45309}.watch{color:#ea580c}.alert{color:#dc2626}
+.chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.chip{background:var(--green-soft);border-radius:8px;padding:7px 11px;font-size:12.5px}
+pre{background:#f6f8f5;border:1px solid var(--line);border-radius:8px;padding:12px;overflow:auto;font-size:12px}
+details{margin:10px 0}summary{cursor:pointer;color:var(--green-dark);font-weight:600}
+blockquote{margin:10px 0 0;padding:10px 14px;background:var(--green-soft);border-left:4px solid var(--green);border-radius:6px;font-size:14px}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding-bottom:26px}
+</style></head>
+<body>
+<header class="topbar">
+  <div class="brand">GreenMate 连续状态认知工作台 · B07 系统组装</div>
+  <div class="sub">生成时间：2026-10-16 16:58:47　·　天气查询地点：南京　·　固定顺序：工具结果 → 证据记录 → 结构化判断 → LLM自然语言解释　·　复用资产：B01~B06</div>
+</header>
+<main>
+
+<section>
+  <h2>五场景对照结果（结构化判断，可对比校验）</h2>
+  <table><tr><th>场景</th><th>声明结论</th><th>计算结论</th><th>关注等级</th>
+  <th>证据完整度</th><th>趋势 r / 速率</th><th>对照</th></tr><tr><td><b>S1</b> 正常稳定</td><td>正常稳定</td><td class='ok'><b>正常稳定</b></td><td class='ok'>正常</td><td>不完整</td><td>0.803 / 0.05</td><td>✅ 一致</td></tr><tr><td><b>S2</b> 渐进漂移</td><td>渐进漂移</td><td class='warn'><b>渐进漂移</b></td><td class='warn'>中等关注</td><td>不完整</td><td>0.999 / 0.439</td><td>✅ 一致</td></tr><tr><td><b>S3</b> 突变异常</td><td>突变异常</td><td class='alert'><b>突变异常</b></td><td class='alert'>高关注</td><td>不完整</td><td>0.835 / 0.668</td><td>✅ 一致</td></tr><tr><td><b>S4</b> 数据缺失</td><td>数据缺失</td><td class='watch'><b>数据缺失</b></td><td class='watch'>观察中</td><td>不完整</td><td>0.982 / 0.6</td><td>✅ 一致</td></tr><tr><td><b>S5</b> 证据不足</td><td>证据不足</td><td class='watch'><b>证据不足</b></td><td class='watch'>观察中</td><td>不完整</td><td>0.999 / 0.439</td><td>✅ 一致</td></tr></table>
+</section>
+
+<section>
+  <h2>① 工具结果（真实执行，可追溯）</h2>
+  <details><summary>get_current_environment　<span class='pill st-ok'>可用</span></summary><pre>{&quot;status&quot;: &quot;ok&quot;, &quot;provider&quot;: &quot;本地 SIMULATED 模拟传感器&quot;, &quot;timestamp&quot;: &quot;2026-10-15T16:13:22.181072&quot;, &quot;source_type&quot;: &quot;SIMULATED&quot;, &quot;temperature&quot;: 26.12, &quot;humidity&quot;: 64.29, &quot;light&quot;: 11846.0}</pre></details><details><summary>get_environment_history　<span class='pill st-un'>错误</span></summary><pre>{&quot;status&quot;: &quot;error&quot;, &quot;error&quot;: &quot;最近 24 小时内无历史记录（时间窗 2026-10-15T16:58:33.448101 ~ 2026-10-16T16:58:33.448101）&quot;}</pre></details><details><summary>get_weather_forecast　<span class='pill st-ok'>可用</span></summary><pre>{&quot;provider&quot;: &quot;Open-Meteo (open-meteo.com)&quot;, &quot;retrieved_at&quot;: &quot;2026-10-16T08:58:33Z&quot;, &quot;query&quot;: &quot;南京&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;error&quot;: null, &quot;location&quot;: &quot;南京&quot;, &quot;forecast_time&quot;: &quot;2026-10-16T08:00&quot;, &quot;temperature&quot;: 20.0, &quot;relative_humidity&quot;: 91, &quot;precipitation_probability&quot;: 2, &quot;cloud_cover&quot;: 87, &quot;radiation&quot;: 182.0, &quot;latitude&quot;: 32.06167, &quot;longitude&quot;: 118.77778}</pre></details><details><summary>search_tomato_knowledge　<span class='pill st-ok'>可用</span></summary><pre>{&quot;status&quot;: &quot;ok&quot;, &quot;provider&quot;: &quot;番茄知识库 RAG（TF-IDF 检索）&quot;, &quot;query&quot;: &quot;番茄花期最适温度与湿度范围&quot;, &quot;count&quot;: 3, &quot;results&quot;: [{&quot;query&quot;: &quot;番茄花期最适温度与湿度范围&quot;, &quot;retrieved_at&quot;: &quot;2026-10-16 16:58:36&quot;, &quot;source_id&quot;: &quot;doc_001&quot;, &quot;chunk_id&quot;: &quot;doc_001#§3.2 空气湿度#p1#1&quot;, &quot;section&quot;: &quot;§3.2 空气湿度&quot;, &quot;page&quot;: 1, &quot;score&quot;: 0.2426, &quot;text&quot;: &quot;花期与结果期最适空气相对湿度为 55%-65%。相对湿度高于 70% 时空气湿度过高，\n抑制蒸腾并影响花粉散落与授粉；相对湿度低于 45% 时空气过干，柱头易失水\n影响授粉。稳定、适中的空气湿度（55%-65%）是番茄开花坐果的有利环境条件。&quot;, &quot;citation&quot;: &quot;《番茄栽培技术手册（节选）》§3.2 空气湿度，国家农业数字图书馆-2024，第1页&quot;}, {&quot;query&quot;: &quot;番茄花期最适温度与湿度范围&quot;, &quot;retrieved_at&quot;: &quot;2026-10-16 16:58:36&quot;, &quot;source_id&quot;: &quot;doc_001&quot;, &quot;chunk_id&quot;: &quot;doc_001#§3.1 温度#p1#0&quot;, &quot;section&quot;: &quot;§3.1 温度&quot;, &quot;page&quot;: 1, &quot;score&quot;: 0.2096, &quot;text&quot;: &quot;番茄属喜温作物，花期与结果期对温度敏感。最适温度区间为 20-26°C：白天宜保持\n20-28°C，夜间宜保持 15-20°C，昼夜温差 8-10°C 有利于营养物质积累与开花坐果。\n当温度持续高于 26°C 时花粉活力下降、授粉效率降低；高于 28°C 时落花落果风险\n显著上升；低于 15°C 时授粉不良、易出现畸形果。&quot;, &quot;citation&quot;: &quot;《番茄栽培技术手册（节选）》§3.1 温度，国家农业数字图书馆-2024，第1页&quot;}, {&quot;query&quot;: &quot;番茄花期最适温度与湿度范围&quot;, &quot;retrieved_at&quot;: &quot;2026-10-16 16:58:36&quot;, &quot;source_id&quot;: &quot;doc_002&quot;, &quot;chunk_id&quot;: &quot;doc_002#§2.1 温度调控#p1#0&quot;, &quot;section&quot;: &quot;§2.1 温度调控&quot;, &quot;page&quot;: 1, &quot;score&quot;: 0.1661, &quot;text&quot;: &quot;温室番茄温度调控以「白天 20-28°C、夜间 15-20°C」为目标。白天温度过高时优先\n通风降温，辅以遮阳网；低温季节通过加温设备补温。调控应避免温幅剧烈波动，\n保持昼夜温差 8-10°C，以利于养分积累与开花坐果。&quot;, &quot;citation&quot;: &quot;《番茄温室环境调控指南》§2.1 温度调控，中国农业出版社-2023，第1页&quot;}]}</pre></details><details><summary>model_prediction　<span class='pill st-un'>不可用</span></summary><pre>{&quot;status&quot;: &quot;unavailable&quot;, &quot;error&quot;: &quot;B06 依赖不可用（pandas/scikit-learn 需 Python 3.12）：No module named &#x27;pandas&#x27;&quot;}</pre></details>
+</section>
+
+
+<section>
+  <h2>S1 · 正常稳定</h2>
+  <div class="hero"><span class="item"><span class="lb">状态判断</span><br>
+    <span class="v ok">正常稳定</span></span>
+    <span class="item"><span class="lb">关注等级</span><br>
+    <span class="v ok">正常</span></span>
+    <span class="item"><span class="lb">证据完整度</span><br>
+    <span class="v">不完整</span></span>
+    <span class="item"><span class="lb">趋势 / r</span><br>
+    <span class="v">0.05°C/h · r=0.803</span></span></div>
+  
+  <h3>② 证据记录（五类证据，严格区分）</h3>
+  <table><tr><th>证据类型</th><th>状态</th><th>来源</th><th>内容</th><th>引用</th></tr><tr><td>①历史观测数据</td><td><span class='pill st-ok'>可用</span></td><td>番茄大棚A区传感器阵列（6点时序）</td><td>共 7 个观测点，温度 24.0→24.3°C（+0.3°C），湿度 58%→60%，线性相关 r=0.803，非单调</td><td></td></tr><tr><td>②当前实时观测</td><td><span class='pill st-ok'>可用</span></td><td>番茄大棚A区传感器阵列（瞬时）</td><td>温度 24.3°C，湿度 60%RH，光照 11300lux，CO₂ 828ppm</td><td></td></tr><tr><td>③外部天气证据</td><td><span class='pill st-ok'>可用</span></td><td>Open-Meteo 天气预报 API（PUBLIC，未来预报，尚未发生）</td><td>南京 预报 2026-10-16T08:00：室外温度 20.0°C，湿度 91%，降水概率 2%</td><td></td></tr><tr><td>④专业知识证据</td><td><span class='pill st-ok'>可用</span></td><td>番茄知识库 RAG（TF-IDF 检索，先验检索）</td><td>花期与结果期最适空气相对湿度为 55%-65%。相对湿度高于 70% 时空气湿度过高，
+抑制蒸腾并影响花粉散落与授粉；相对湿度低于 45% 时空气过干，柱头易失</td><td>《番茄栽培技术手册（节选）》§3.2 空气湿度，国家农业数字图书馆-2024，第1页</td></tr><tr><td>⑤模型预测MODEL_OUTPUT</td><td><span class='pill st-un'>不可用</span></td><td>线性趋势外推模型 v1.2（仅辅助，不覆盖实测）</td><td>模型推理不可用：B06 依赖不可用（pandas/scikit-learn 需 Python 3.12）：No module named &#x27;pandas&#x27;</td><td></td></tr></table>
+  <h3>③ 结构化判断（JSON，可对比校验）</h3>
+  <pre>{
+  &quot;scenario_id&quot;: &quot;S1&quot;,
+  &quot;current_state&quot;: &quot;正常稳定&quot;,
+  &quot;attention_level&quot;: &quot;正常&quot;,
+  &quot;evidence_integrity&quot;: &quot;不完整&quot;,
+  &quot;degraded&quot;: false,
+  &quot;degradation_reason&quot;: &quot;&quot;,
+  &quot;trend&quot;: {
+    &quot;points&quot;: 7,
+    &quot;t_start&quot;: 24.0,
+    &quot;t_end&quot;: 24.3,
+    &quot;delta&quot;: 0.3,
+    &quot;rate_per_hour&quot;: 0.05,
+    &quot;r&quot;: 0.803,
+    &quot;monotonic&quot;: false
+  },
+  &quot;breaches&quot;: [],
+  &quot;limits&quot;: {
+    &quot;temp&quot;: 26.0,
+    &quot;hum&quot;: 65.0
+  }
+}</pre>
+  <h3>④ LLM 自然语言解释</h3>
+  <p>当前番茄温室处于正常稳定状态，关注等级为正常。温度由24.0°C升至24.3°C（+0.3°C），湿度由58%升至60%，趋势线性相关r=0.803，但非单调；未出现越限项，温度与湿度均低于26.0°C和65.0的限值。需注意证据完整性为不完整：模型预测因B06依赖不可用（缺少pandas）而无法推理，但系统未发生可信降级。该缺失会降低对后续趋势的置信度，因此上述结论仅基于现有观测与知识证据。此外，光照为单点采样、CO₂为点读数，未覆盖全棚空间分布，正常态结论建立在所有传感器均正常的假设之上。</p>
+  <blockquote>场景声明结论：正常稳定 / 正常　→　
+  对照结果：✅ 一致</blockquote>
+</section>
+<section>
+  <h2>S2 · 渐进漂移</h2>
+  <div class="hero"><span class="item"><span class="lb">状态判断</span><br>
+    <span class="v warn">渐进漂移</span></span>
+    <span class="item"><span class="lb">关注等级</span><br>
+    <span class="v warn">中等关注</span></span>
+    <span class="item"><span class="lb">证据完整度</span><br>
+    <span class="v">不完整</span></span>
+    <span class="item"><span class="lb">趋势 / r</span><br>
+    <span class="v">0.439°C/h · r=0.999</span></span></div>
+  
+  <h3>② 证据记录（五类证据，严格区分）</h3>
+  <table><tr><th>证据类型</th><th>状态</th><th>来源</th><th>内容</th><th>引用</th></tr><tr><td>①历史观测数据</td><td><span class='pill st-ok'>可用</span></td><td>番茄大棚A区传感器阵列（6点时序）</td><td>共 7 个观测点，温度 23.6→26.2°C（+2.6°C），湿度 57%→65%，线性相关 r=0.999，单调</td><td></td></tr><tr><td>②当前实时观测</td><td><span class='pill st-ok'>可用</span></td><td>番茄大棚A区传感器阵列（瞬时）</td><td>温度 26.2°C，湿度 65%RH，光照 11900lux，CO₂ 847ppm</td><td></td></tr><tr><td>③外部天气证据</td><td><span class='pill st-ok'>可用</span></td><td>Open-Meteo 天气预报 API（PUBLIC，未来预报，尚未发生）</td><td>南京 预报 2026-10-16T08:00：室外温度 20.0°C，湿度 91%，降水概率 2%</td><td></td></tr><tr><td>④专业知识证据</td><td><span class='pill st-ok'>可用</span></td><td>番茄知识库 RAG（TF-IDF 检索，先验检索）</td><td>花期与结果期最适空气相对湿度为 55%-65%。相对湿度高于 70% 时空气湿度过高，
+抑制蒸腾并影响花粉散落与授粉；相对湿度低于 45% 时空气过干，柱头易失</td><td>《番茄栽培技术手册（节选）》§3.2 空气湿度，国家农业数字图书馆-2024，第1页</td></tr><tr><td>⑤模型预测MODEL_OUTPUT</td><td><span class='pill st-un'>不可用</span></td><td>线性趋势外推模型 v1.2（仅辅助，不覆盖实测）</td><td>模型推理不可用：B06 依赖不可用（pandas/scikit-learn 需 Python 3.12）：No module named &#x27;pandas&#x27;</td><td></td></tr></table>
+  <h3>③ 结构化判断（JSON，可对比校验）</h3>
+  <pre>{
+  &quot;scenario_id&quot;: &quot;S2&quot;,
+  &quot;current_state&quot;: &quot;渐进漂移&quot;,
+  &quot;attention_level&quot;: &quot;中等关注&quot;,
+  &quot;evidence_integrity&quot;: &quot;不完整&quot;,
+  &quot;degraded&quot;: false,
+  &quot;degradation_reason&quot;: &quot;&quot;,
+  &quot;trend&quot;: {
+    &quot;points&quot;: 7,
+    &quot;t_start&quot;: 23.6,
+    &quot;t_end&quot;: 26.2,
+    &quot;delta&quot;: 2.6,
+    &quot;rate_per_hour&quot;: 0.439,
+    &quot;r&quot;: 0.999,
+    &quot;monotonic&quot;: true
+  },
+  &quot;breaches&quot;: [
+    &quot;温度+0.2°C&quot;
+  ],
+  &quot;limits&quot;: {
+    &quot;temp&quot;: 26.0,
+    &quot;hum&quot;: 65.0
+  }
+}</pre>
+  <h3>④ LLM 自然语言解释</h3>
+  <p>当前番茄温室处于“渐进漂移”状态，关注等级为中等关注。证据完整性不完整，但未发生可信降级。趋势方面，7个观测点显示温度由23.6°C升至26.2°C，升幅2.6°C，每小时约0.439°C，线性相关r=0.999且单调上升；湿度由57%升至65%。越限项为温度超出上限0.2°C，温度限值为26.0°C，湿度限值为65.0°C。需注意，光照为单点采样，无法反映棚内空间分布；外部次日降雨的湿度叠加幅度取决于温室密封等级，而系统未输入该参数；线性外推模型在自然回落场景下会高估持续时间。此外，模型预测证据不可用，原因是B06依赖不可用，缺少pandas模块，这可能影响对后续趋势的推断置信度。</p>
+  <blockquote>场景声明结论：渐进漂移 / 中等关注　→　
+  对照结果：✅ 一致</blockquote>
+</section>
+<section>
+  <h2>S3 · 突变异常</h2>
+  <div class="hero"><span class="item"><span class="lb">状态判断</span><br>
+    <span class="v alert">突变异常</span></span>
+    <span class="item"><span class="lb">关注等级</span><br>
+    <span class="v alert">高关注</span></span>
+    <span class="item"><span class="lb">证据完整度</span><br>
+    <span class="v">不完整</span></span>
+    <span class="item"><span class="lb">趋势 / r</span><br>
+    <span class="v">0.668°C/h · r=0.835</span></span></div>
+  
+  <h3>② 证据记录（五类证据，严格区分）</h3>
+  <table><tr><th>证据类型</th><th>状态</th><th>来源</th><th>内容</th><th>引用</th></tr><tr><td>①历史观测数据</td><td><span class='pill st-ok'>可用</span></td><td>番茄大棚A区传感器阵列（7点时序）</td><td>共 7 个观测点，温度 24.0→28.9°C（+4.9°C），湿度 58%→74%，线性相关 r=0.835，单调</td><td></td></tr><tr><td>②当前实时观测</td><td><span class='pill st-ok'>可用</span></td><td>番茄大棚A区传感器阵列（瞬时）</td><td>温度 28.9°C，湿度 74%RH，光照 9800lux，CO₂ 902ppm</td><td></td></tr><tr><td>③外部天气证据</td><td><span class='pill st-ok'>可用</span></td><td>Open-Meteo 天气预报 API（PUBLIC，未来预报，尚未发生）</td><td>南京 预报 2026-10-16T08:00：室外温度 20.0°C，湿度 91%，降水概率 2%</td><td></td></tr><tr><td>④专业知识证据</td><td><span class='pill st-ok'>可用</span></td><td>番茄知识库 RAG（TF-IDF 检索，先验检索）</td><td>花期与结果期最适空气相对湿度为 55%-65%。相对湿度高于 70% 时空气湿度过高，
+抑制蒸腾并影响花粉散落与授粉；相对湿度低于 45% 时空气过干，柱头易失</td><td>《番茄栽培技术手册（节选）》§3.2 空气湿度，国家农业数字图书馆-2024，第1页</td></tr><tr><td>⑤模型预测MODEL_OUTPUT</td><td><span class='pill st-un'>不可用</span></td><td>线性趋势外推模型 v1.2（仅辅助，不覆盖实测）</td><td>模型推理不可用：B06 依赖不可用（pandas/scikit-learn 需 Python 3.12）：No module named &#x27;pandas&#x27;</td><td></td></tr></table>
+  <h3>③ 结构化判断（JSON，可对比校验）</h3>
+  <pre>{
+  &quot;scenario_id&quot;: &quot;S3&quot;,
+  &quot;current_state&quot;: &quot;突变异常&quot;,
+  &quot;attention_level&quot;: &quot;高关注&quot;,
+  &quot;evidence_integrity&quot;: &quot;不完整&quot;,
+  &quot;degraded&quot;: false,
+  &quot;degradation_reason&quot;: &quot;&quot;,
+  &quot;trend&quot;: {
+    &quot;points&quot;: 7,
+    &quot;t_start&quot;: 24.0,
+    &quot;t_end&quot;: 28.9,
+    &quot;delta&quot;: 4.9,
+    &quot;rate_per_hour&quot;: 0.668,
+    &quot;r&quot;: 0.835,
+    &quot;monotonic&quot;: true
+  },
+  &quot;breaches&quot;: [
+    &quot;温度+0.9°C&quot;,
+    &quot;湿度+4%&quot;
+  ],
+  &quot;limits&quot;: {
+    &quot;temp&quot;: 28.0,
+    &quot;hum&quot;: 70.0
+  }
+}</pre>
+  <h3>④ LLM 自然语言解释</h3>
+  <p>当前判断为“突变异常”，关注等级为“高关注”，证据完整性为“不完整”，未发生可信降级。趋势上，7个观测点显示温度由24.0°C升至28.9°C，升幅4.9°C，速率约0.668°C/小时，线性相关r=0.835且单调上升；越限项为温度+0.9°C、湿度+4%，对应限值温度28.0°C、湿度70.0%。实时观测为温度28.9°C、湿度74%RH、光照9800lux、CO₂ 902ppm。需注意，通风/遮阳设备状态未接入系统，故障为间接推断；光照骤降未排除个别传感器异常；突变仅持续1-2h，样本有限，成因置信度受限。模型预测因B06依赖不可用而无法提供，故不对成因作进一步判断。</p>
+  <blockquote>场景声明结论：突变异常 / 高关注　→　
+  对照结果：✅ 一致</blockquote>
+</section>
+<section>
+  <h2>S4 · 数据缺失</h2>
+  <div class="hero"><span class="item"><span class="lb">状态判断</span><br>
+    <span class="v watch">数据缺失</span></span>
+    <span class="item"><span class="lb">关注等级</span><br>
+    <span class="v watch">观察中</span></span>
+    <span class="item"><span class="lb">证据完整度</span><br>
+    <span class="v">不完整</span></span>
+    <span class="item"><span class="lb">趋势 / r</span><br>
+    <span class="v">0.6°C/h · r=0.982</span></span></div>
+  <blockquote>⚠ 可信降级：历史观测不足，无法可靠拟合趋势，结论降级为观察中</blockquote>
+  <h3>② 证据记录（五类证据，严格区分）</h3>
+  <table><tr><th>证据类型</th><th>状态</th><th>来源</th><th>内容</th><th>引用</th></tr><tr><td>①历史观测数据</td><td><span class='pill st-part'>部分</span></td><td>番茄大棚A区传感器阵列（存在缺口）</td><td>共 3 个观测点，温度 24.8→26.0°C（+1.2°C），湿度 60%→63%，线性相关 r=0.982，单调</td><td></td></tr><tr><td>②当前实时观测</td><td><span class='pill st-ok'>可用</span></td><td>番茄大棚A区传感器阵列（瞬时）</td><td>温度 26.0°C，湿度 63%RH，光照 11500lux，CO₂ 842ppm</td><td></td></tr><tr><td>③外部天气证据</td><td><span class='pill st-ok'>可用</span></td><td>Open-Meteo 天气预报 API（PUBLIC，未来预报，尚未发生）</td><td>南京 预报 2026-10-16T08:00：室外温度 20.0°C，湿度 91%，降水概率 2%</td><td></td></tr><tr><td>④专业知识证据</td><td><span class='pill st-ok'>可用</span></td><td>番茄知识库 RAG（TF-IDF 检索，先验检索）</td><td>花期与结果期最适空气相对湿度为 55%-65%。相对湿度高于 70% 时空气湿度过高，
+抑制蒸腾并影响花粉散落与授粉；相对湿度低于 45% 时空气过干，柱头易失</td><td>《番茄栽培技术手册（节选）》§3.2 空气湿度，国家农业数字图书馆-2024，第1页</td></tr><tr><td>⑤模型预测MODEL_OUTPUT</td><td><span class='pill st-un'>不可用</span></td><td>线性趋势外推模型 v1.2（历史数据不足）</td><td>模型输出不可用（历史数据不足或依赖缺失）</td><td></td></tr></table>
+  <h3>③ 结构化判断（JSON，可对比校验）</h3>
+  <pre>{
+  &quot;scenario_id&quot;: &quot;S4&quot;,
+  &quot;current_state&quot;: &quot;数据缺失&quot;,
+  &quot;attention_level&quot;: &quot;观察中&quot;,
+  &quot;evidence_integrity&quot;: &quot;不完整&quot;,
+  &quot;degraded&quot;: true,
+  &quot;degradation_reason&quot;: &quot;历史观测不足，无法可靠拟合趋势，结论降级为观察中&quot;,
+  &quot;trend&quot;: {
+    &quot;points&quot;: 3,
+    &quot;t_start&quot;: 24.8,
+    &quot;t_end&quot;: 26.0,
+    &quot;delta&quot;: 1.2,
+    &quot;rate_per_hour&quot;: 0.6,
+    &quot;r&quot;: 0.982,
+    &quot;monotonic&quot;: true
+  },
+  &quot;breaches&quot;: [],
+  &quot;limits&quot;: {
+    &quot;temp&quot;: 26.0,
+    &quot;hum&quot;: 65.0
+  }
+}</pre>
+  <h3>④ LLM 自然语言解释</h3>
+  <p>当前场景为S4数据缺失，系统判断状态为“数据缺失”，关注等级为“观察中”，证据完整性为“不完整”，并已发生可信降级，降级原因为历史观测不足、无法可靠拟合趋势，结论降级为观察中。现有3个观测点显示温度由24.8°C升至26.0°C（+1.2°C），湿度由60%升至63%，呈单调上升，线性相关r=0.982，速率0.6°C/小时；当前实时观测温度26.0°C、湿度63%RH，未记录越限项。需注意，08:30—10:30因传感器离线导致数据缺失，无法确认该时段真实环境状态；3个点不足以支撑趋势拟合，线性外推与相关系数均失去意义，模型输出亦不可用，因此上述结论置信度受限，仅作观察参考。</p>
+  <blockquote>场景声明结论：数据缺失 / 观察中　→　
+  对照结果：✅ 一致</blockquote>
+</section>
+<section>
+  <h2>S5 · 证据不足</h2>
+  <div class="hero"><span class="item"><span class="lb">状态判断</span><br>
+    <span class="v watch">证据不足</span></span>
+    <span class="item"><span class="lb">关注等级</span><br>
+    <span class="v watch">观察中</span></span>
+    <span class="item"><span class="lb">证据完整度</span><br>
+    <span class="v">不完整</span></span>
+    <span class="item"><span class="lb">趋势 / r</span><br>
+    <span class="v">0.439°C/h · r=0.999</span></span></div>
+  <blockquote>⚠ 可信降级：专业知识/阈值不可用，越限无法量化，结论退回人工评估</blockquote>
+  <h3>② 证据记录（五类证据，严格区分）</h3>
+  <table><tr><th>证据类型</th><th>状态</th><th>来源</th><th>内容</th><th>引用</th></tr><tr><td>①历史观测数据</td><td><span class='pill st-ok'>可用</span></td><td>番茄大棚A区传感器阵列（6点时序）</td><td>共 7 个观测点，温度 23.7→26.3°C（+2.6°C），湿度 57%→65%，线性相关 r=0.999，单调</td><td></td></tr><tr><td>②当前实时观测</td><td><span class='pill st-ok'>可用</span></td><td>番茄大棚A区传感器阵列（瞬时）</td><td>温度 26.3°C，湿度 65%RH，光照 12000lux，CO₂ 850ppm</td><td></td></tr><tr><td>③外部天气证据</td><td><span class='pill st-ok'>可用</span></td><td>Open-Meteo 天气预报 API（PUBLIC，未来预报，尚未发生）</td><td>南京 预报 2026-10-16T08:00：室外温度 20.0°C，湿度 91%，降水概率 2%</td><td></td></tr><tr><td>④专业知识证据</td><td><span class='pill st-un'>不可用</span></td><td>RAG（unavailable）</td><td>RAG 检索不可用，未获取花期适宜阈值（温度/湿度上下限未知）</td><td></td></tr><tr><td>⑤模型预测MODEL_OUTPUT</td><td><span class='pill st-un'>不可用</span></td><td>线性趋势外推模型 v1.2（仅辅助，不覆盖实测）</td><td>模型推理不可用：B06 依赖不可用（pandas/scikit-learn 需 Python 3.12）：No module named &#x27;pandas&#x27;</td><td></td></tr></table>
+  <h3>③ 结构化判断（JSON，可对比校验）</h3>
+  <pre>{
+  &quot;scenario_id&quot;: &quot;S5&quot;,
+  &quot;current_state&quot;: &quot;证据不足&quot;,
+  &quot;attention_level&quot;: &quot;观察中&quot;,
+  &quot;evidence_integrity&quot;: &quot;不完整&quot;,
+  &quot;degraded&quot;: true,
+  &quot;degradation_reason&quot;: &quot;专业知识/阈值不可用，越限无法量化，结论退回人工评估&quot;,
+  &quot;trend&quot;: {
+    &quot;points&quot;: 7,
+    &quot;t_start&quot;: 23.7,
+    &quot;t_end&quot;: 26.3,
+    &quot;delta&quot;: 2.6,
+    &quot;rate_per_hour&quot;: 0.439,
+    &quot;r&quot;: 0.999,
+    &quot;monotonic&quot;: true
+  },
+  &quot;breaches&quot;: [],
+  &quot;limits&quot;: null
+}</pre>
+  <h3>④ LLM 自然语言解释</h3>
+  <p>当前场景为 S5，系统判断状态为“证据不足”，关注等级为“观察中”，证据完整性为“不完整”，并已发生可信降级。降级原因是专业知识/阈值不可用，导致越限无法量化，结论退回人工评估。现有观测显示，7 个历史点中温度由 23.7°C 升至 26.3°C，湿度由 57% 升至 65%，趋势单调且线性相关 r=0.999；实时温度为 26.3°C、湿度 65%RH、光照 12000lux、CO₂ 850ppm。外部天气证据显示南京 2026-10-16T08:00 室外温度 20.0°C、湿度 91%、降水概率 2%。但 RAG 检索不可用，花期适宜阈值缺失，模型推理也不可用，因此越限项为空、限制未知。需注意，不确定性主要来自知识侧而非数据侧，传感器数据本身完整可靠，但当前无法据此形成越限结论。</p>
+  <blockquote>场景声明结论：证据不足 / 观察中　→　
+  对照结果：✅ 一致</blockquote>
+</section>
+
+<section>
+  <h2>系统能力边界（第四遍 · 边界判断）</h2>
+  <table><tr><th>能力</th><th>系统能做的（边界内）</th><th>系统明确不做的（边界外）</th></tr><tr><td><b>环境状态识别</b></td><td>温度/湿度/光照时序的状态、趋势、越限</td><td>病害诊断、长势判断、产量预测</td></tr><tr><td><b>外部天气</b></td><td>未来 24h 预报作为扰动风险证据（明确未发生）</td><td>将预报当作已发生事实</td></tr><tr><td><b>知识检索</b></td><td>仅返回知识库片段并附引用，领域限于已注册资料</td><td>超范围常识补造、无来源结论</td></tr><tr><td><b>模型预测</b></td><td>仅 next_window_attention 辅助证据，不覆盖实测</td><td>覆盖实测、替代规则判断</td></tr><tr><td><b>多源证据</b></td><td>五类证据严格区分、分歧显式表达、可信降级</td><td>强行合并矛盾证据、虚构补全</td></tr></table>
+</section>
+
+</main>
+<footer>GreenMate B07 · 复用 B01~B06 资产，零新增底层能力 · 演示数据，判断输出仅供参考</footer>
+</body></html>
